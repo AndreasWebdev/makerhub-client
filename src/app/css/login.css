@@ -1,0 +1,183 @@
+:root {
+  --colorBackground: #fff;
+  --colorBackgroundLight: rgba(0, 0, 0, 0.1);
+  --colorText: #3b3b3b;
+  --colorTextLight: #4b4b4b;
+  --logoLong: url('../img/LogoLong_OnLight.svg');
+  --colorInput: rgba(0, 0, 0, 0.05);
+  --colorPrimary: #D73534;
+  --colorPrimaryDark: #b93131;
+  --colorPrimaryDarkest: #a52c2c;
+  --colorPrimaryText: #fff;
+}
+:root[dark] {
+  --colorBackground: #2d2d2d;
+  --colorBackgroundLight: rgba(255, 255, 255, 0.1);
+  --colorText: #fff;
+  --colorTextLight: #e6e6e6;
+  --logoLong: url('../img/LogoLong_OnDark.svg');
+  --colorInput: rgba(255, 255, 255, 0.05);
+  --colorPrimary: #D73534;
+  --colorPrimaryDark: #b93131;
+  --colorPrimaryDarkest: #a52c2c;
+  --colorPrimaryText: #fff;
+}
+input[type="text"],
+input[type="password"] {
+  font-family: "Product Sans", sans-serif;
+  font-size: 16px;
+  color: var(--colorText);
+  background-color: var(--colorInput);
+  border: 2px solid transparent;
+  border-radius: 4px;
+  padding: 6px 16px;
+  transition: 0.2s ease all;
+}
+input[type="text"]::placeholder,
+input[type="password"]::placeholder {
+  color: var(--colorText);
+  opacity: 0.6;
+}
+input[type="text"]:focus,
+input[type="password"]:focus {
+  background: transparent;
+  border-color: var(--colorPrimary);
+  outline: 0;
+}
+button,
+.button {
+  font-family: "Product Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--colorPrimaryText);
+  background: var(--colorPrimary);
+  border-radius: 4px;
+  border: 0;
+  padding: 10px 15px;
+  transition: 0.2s ease all;
+}
+button.login,
+.button.login {
+  display: block;
+  padding: 10px 70px;
+  margin: 0 auto 10px;
+}
+button:hover,
+.button:hover {
+  background: var(--colorPrimaryDark);
+}
+button:active,
+.button:active {
+  background: var(--colorPrimaryDarkest);
+}
+button:focus,
+.button:focus {
+  outline: 0;
+}
+.progress {
+  background: var(--colorBackgroundLight);
+  height: 4px;
+  width: 100px;
+  position: relative;
+  overflow: hidden;
+}
+.progress-bar {
+  height: 100%;
+  left: 0;
+  background: var(--colorPrimary);
+  position: absolute;
+  animation-name: animIndeterminate;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  transition: 1s ease all;
+}
+@keyframes animIndeterminate {
+  0% {
+    left: 0%;
+    right: 100%;
+  }
+  25% {
+    left: 0%;
+    right: 0%;
+  }
+  100% {
+    left: 100%;
+    right: 0%;
+  }
+}
+html,
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+body {
+  background: var(--colorBackground);
+  font-family: "Product Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--colorText);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main {
+  display: none;
+  width: 250px;
+  grid-gap: 15px;
+  position: relative;
+}
+main.loading {
+  justify-content: center;
+  align-items: center;
+}
+main.loading.active {
+  display: flex;
+}
+main.login .logo {
+  width: 220px;
+  height: 22px;
+  margin: 0 auto 25px;
+  background: var(--logoLong) no-repeat center;
+  background-size: contain;
+}
+main.login .notification {
+  display: none;
+  border: 2px solid var(--colorPrimary);
+  padding: 10px;
+  border-radius: 4px;
+  color: var(--colorTextLight);
+  font-size: 14px;
+  line-height: 1.5;
+}
+main.login .notification.active {
+  display: block;
+}
+main.login .login-form {
+  display: grid;
+  grid-gap: 15px;
+}
+main.login .login-form .actions {
+  text-align: center;
+}
+main.login .login-form .actions a {
+  color: var(--colorPrimary);
+  text-decoration: none;
+  font-size: 12px;
+  transition: 0.2s ease all;
+}
+main.login .login-form .actions a:hover {
+  opacity: 0.6;
+}
+main.active {
+  display: grid;
+}
+footer {
+  position: absolute;
+  bottom: 25px;
+  left: 0;
+  right: 0;
+  opacity: 0.4;
+  text-align: center;
+}
+/*# sourceMappingURL=login.css.map */

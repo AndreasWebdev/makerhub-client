@@ -1,0 +1,88 @@
+@import "themes";
+@import "general";
+
+html, body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+body {
+  background: var(--colorBackground);
+  font-family: "Product Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--colorText);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main {
+  display: none;
+  width: 250px;
+  grid-gap: 15px;
+  position: relative;
+
+  &.loading {
+    justify-content:center;
+    align-items:center;
+
+    &.active {
+      display: flex;
+    }
+  }
+  &.login {
+    & .logo {
+      width: 220px;
+      height: 22px;
+      margin: 0 auto 25px;
+      background: var(--logoLong) no-repeat center;
+      background-size: contain;
+    }
+
+    & .notification {
+      display: none;
+      border: 2px solid var(--colorPrimary);
+      padding: 10px;
+      border-radius: 4px;
+      color: var(--colorTextLight);
+      font-size: 14px;
+      line-height: 1.5;
+
+      &.active {
+        display: block;
+      }
+    }
+
+    & .login-form {
+      display: grid;
+      grid-gap: 15px;
+
+      & .actions {
+        text-align: center;
+
+        a {
+          color: var(--colorPrimary);
+          text-decoration: none;
+          font-size: 12px;
+          transition: 0.2s ease all;
+
+          &:hover {
+            opacity: 0.6;
+          }
+        }
+      }
+    }
+  }
+
+  &.active {
+    display: grid;
+  }
+}
+footer {
+  position: absolute;
+  bottom: 25px;
+  left: 0;
+  right: 0;
+  opacity: 0.4;
+  text-align: center;
+}

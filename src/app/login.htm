@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="utf-8" />
+      <title>MakerHub Studio</title>
+
+      <link rel="stylesheet" href="css/reset.css" />
+      <link rel="stylesheet" href="https://cdn.materialdesignicons.com/3.6.95/css/materialdesignicons.min.css" />
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Product+Sans:100,300,400,700" />
+      <link rel="stylesheet" href="css/login.css" />
+    </head>
+    <body>
+      <main class="loading active">
+        <div class="progress">
+          <div class="progress-bar"></div>
+        </div>
+      </main>
+      <main class="login">
+        <div class="logo"></div>
+        <div class="notification">The username and password you entered did not match our records. Please double-check and try again.</div>
+        <div class="login-form">
+          <input type="text" id="loginUsername" placeholder="Username" />
+          <input type="password" id="loginPassword" placeholder="Password" />
+          <div class="actions">
+            <button onclick="login()" class="login">Login</button>
+            <a href="#" onclick="register()">Create an account</a>
+          </div>
+        </div>
+      </main>
+
+      <footer>
+        &copy; 2019 - makerhub.studio
+      </footer>
+
+      <script src="js/login.js"></script>
+    </body>
+  </html>

@@ -12,15 +12,20 @@ let mainWindow;
 const createWindow = () => {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 400,
+    minWidth: 400,
+    height: 750,
+    minHeight: 420,
   });
 
-  // and load the index.html of the app.
-  mainWindow.loadURL(`file://${__dirname}/index.html`);
+  // and load the login.htm of the app.
+  mainWindow.loadURL(`file://${__dirname}/app/login.htm`);
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
+
+  // disable dev menu
+  mainWindow.setMenu(null);
 
   // Emitted when the window is closed.
   mainWindow.on('closed', () => {
