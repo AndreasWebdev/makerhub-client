@@ -1,25 +1,41 @@
 :root {
+  // General
   --colorBackground: #fff;
-  --colorBackgroundLight: rgba(0,0,0,0.1);
+  --colorBackgroundSecondary: #F5F5F5;
   --colorText: #3b3b3b;
   --colorTextLight: #4b4b4b;
+
+  // Branding
   --logoLong: url('../img/LogoLong_OnLight.svg');
-  --colorInput: rgba(0,0,0,0.05);
+  --logoHat: url('../img/LogoHat_OnAll.svg');
   --colorPrimary: #D73534;
   --colorPrimaryDark: #b93131;
   --colorPrimaryDarkest: #a52c2c;
   --colorPrimaryText: #fff;
+
+  // Header
+  --colorHeaderBackground: #fff;
+  --shadowHeaderBackground: 0px 2px 8px rgba(0,0,0,0.15);
+  --colorItemsHeader: rgba(0,0,0,0.6);
 }
 
-:root[dark] {
-  --colorBackground: #2d2d2d;
-  --colorBackgroundLight: rgba(255,255,255,0.1);
+:root[dark="on"] {
+  // General
+  --colorBackground: #444444;
+  --colorBackgroundSecondary: #575757;
   --colorText: #fff;
   --colorTextLight: #e6e6e6;
+
+  // Branding
   --logoLong: url('../img/LogoLong_OnDark.svg');
-  --colorInput: rgba(255,255,255,0.05);
+  --logoHat: url('../img/LogoHat_OnAll.svg');
   --colorPrimary: #D73534;
   --colorPrimaryDark: #b93131;
   --colorPrimaryDarkest: #a52c2c;
   --colorPrimaryText: #fff;
+
+  // Header
+  --colorHeaderBackground: #2D2D2D;
+  --shadowHeaderBackground: 0px 2px 8px rgba(0,0,0,0.15);
+  --colorItemsHeader: rgba(255,255,255,0.7);
 }

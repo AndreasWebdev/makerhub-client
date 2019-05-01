@@ -1,0 +1,289 @@
+@import "themes";
+@import "general";
+
+html, body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+body {
+  background: var(--colorBackground);
+  font-family: "Product Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--colorText);
+  transition: 0.2s ease all;
+}
+main {
+  display: none;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+
+  &.loading {
+    grid-gap: 15px;
+    position: relative;
+    justify-content:center;
+    align-items:center;
+
+    &.active {
+      display: flex;
+    }
+  }
+  &.app {
+    display: grid;
+    grid-template-rows: 60px auto auto 1fr;
+    grid-gap: 10px;
+    padding-bottom: 20px;
+    opacity: 0;
+    transition: 0.4s ease opacity;
+    max-height: 100%;
+
+    &.letsGo {
+      grid-template-rows: 60px auto 1fr;
+
+      & .section-letsGo {
+        display: block;
+      }
+      & .section-timer {
+        display: none;
+      }
+      & .section-currentLevel {
+        display: none;
+      }
+    }
+
+    & header {
+      background: var(--colorHeaderBackground);
+      box-shadow: var(--shadowHeaderBackground);
+      transition: 0.2s ease background, 0.2s ease color, 0.2s ease box-shadow;
+      display: grid;
+      margin-bottom: 10px;
+      grid-template-columns: auto 1fr auto;
+
+      & .branding {
+        padding: 0px 15px 0px 20px;
+        display: flex;
+        justify-content:center;
+        align-items:center;
+
+        & .logo {
+          width: 35px;
+          height: 22px;
+          background: var(--logoHat) center no-repeat;
+          background-size: contain;
+        }
+      }
+      & .username {
+        display: flex;
+        align-items:center;
+        overflow: hidden;
+        word-break: break-all;
+
+        & span {
+          font-weight: bold;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+      & .actions {
+        padding: 0px 20px;
+        display: flex;
+        justify-content:center;
+        align-items:center;
+
+        & .item {
+          width: 30px;
+          height: 30px;
+          display: flex;
+          justify-content:center;
+          align-items:center;
+          margin-left: 5px;
+          transition: 0.2s ease all;
+
+          &:first-of-type {
+            margin-left: 0px;
+          }
+          & i {
+            font-size: 22px;
+            color: var(--colorItemsHeader);
+          }
+          &:hover {
+            opacity: 0.6;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+    & section {
+      padding: 0px 20px;
+
+      &.section-letsGo {
+        display: none;
+
+        & .letsGo, .queueEmpty {
+          padding: 10px 15px;
+          background: var(--colorBackgroundSecondary);
+          border-radius: 4px;
+          display: none;
+
+          & p {
+            line-height: 1.5;
+            margin-bottom: 15px;
+          }
+          & .button {
+            display: inline-block;
+          }
+          &.active {
+            display: block;
+          }
+        }
+      }
+      &.section-timer {
+        & .timer {
+          padding: 10px 15px;
+          background: var(--colorBackgroundSecondary);
+          border-radius: 4px;
+          display: grid;
+          grid-template-columns: auto auto 1fr auto;
+          grid-gap: 10px;
+          align-items: center;
+          transition: 0.2s ease all;
+
+          & .mdi {
+            font-size: 24px;
+          }
+          & .currentTime {
+            font-size: 18px;
+          }
+          & .highscoreTime {
+            opacity: 0.4;
+          }
+          & .actions {
+            display: grid;
+            grid-auto-flow: column;
+            grid-gap: 5px;
+
+            & .button-action {
+              display: none;
+
+              &.active {
+                display: block;
+              }
+            }
+          }
+        }
+      }
+      &.section-currentLevel {
+        display: grid;
+        grid-gap: 10px;
+
+        & .currentLevel {
+          padding: 15px;
+          background: var(--colorBackgroundSecondary);
+          border-radius: 4px;
+          border: 2px solid var(--colorPrimary);
+          transition: 0.2s ease all;
+
+          & .levelTitle {
+            font-weight: 600;
+            margin-bottom: 5px;
+          }
+          & .levelCode {
+            margin-bottom: 5px;
+          }
+          & .levelCreator {
+            margin-bottom: 10px;
+            opacity: 0.6;
+            font-size: 12px;
+          }
+          & .requestedBy {
+            color: var(--colorPrimary);
+            font-size: 12px;
+          }
+        }
+        & .currentLevel-actions {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          grid-gap: 10px;
+        }
+      }
+      &.section-queue {
+        display: grid;
+        grid-template-rows: auto 1fr;
+        grid-gap: 10px;
+        overflow: hidden;
+
+        & .queue-actions {
+          padding: 15px;
+          background: var(--colorBackgroundSecondary);
+          border-radius: 4px;
+          display: grid;
+          grid-template-columns: 1fr auto;
+          grid-gap: 15px;
+          align-items: center;
+          transition: 0.2s ease all;
+
+          & .queueCount {
+          }
+          & .button-action {
+            display: none;
+
+            &.active {
+              display: block;
+            }
+          }
+        }
+        & .queue {
+          padding: 10px 15px;
+          background: var(--colorBackgroundSecondary);
+          border-radius: 4px;
+          transition: 0.2s ease all;
+          overflow-y: scroll;
+
+          & .item {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            grid-gap: 15px;
+
+            &:not(:last-of-type) {
+              margin-bottom: 15px;
+            }
+
+            & .text {
+              overflow: hidden;
+              word-break: break-all;
+
+              & .title {
+                font-weight: bold;
+                margin-bottom: 5px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+              }
+              & .requestedBy {
+                font-size: 12px;
+                opacity: 0.6;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+              }
+            }
+            & .position {
+              align-self: center;
+              font-size: 20px;
+              opacity: 0.6;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.active {
+    display: grid;
+    opacity: 1;
+  }
+}

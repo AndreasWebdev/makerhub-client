@@ -2,7 +2,7 @@ input[type="text"], input[type="password"] {
   font-family: "Product Sans", sans-serif;
   font-size: 16px;
   color: var(--colorText);
-  background-color: var(--colorInput);
+  background-color: var(--colorBackgroundSecondary);
   border: 2px solid transparent;
   border-radius: 4px;
   padding: 6px 16px;
@@ -11,6 +11,7 @@ input[type="text"], input[type="password"] {
   &::placeholder {
     color: var(--colorText);
     opacity: 0.6;
+    transition: 0.2s ease all;
   }
   &:focus {
     background: transparent;
@@ -36,6 +37,7 @@ button, .button {
   }
   &:hover {
     background: var(--colorPrimaryDark);
+    cursor: pointer;
   }
   &:active {
     background: var(--colorPrimaryDarkest);
@@ -43,10 +45,43 @@ button, .button {
   &:focus {
     outline: 0;
   }
+  &.button-action {
+    background: var(--colorBackground);
+    color: var(--colorPrimary);
+    padding: 5px 15px;
+    font-weight: 600;
+    transition: 0.2s ease all;
+
+    &:hover {
+      background: var(--colorPrimary);
+      color: var(--colorPrimaryText);
+    }
+  }
+  &.button-icon {
+    padding: 6px 11px;
+    display: grid;
+    grid-template-columns: 20px 1fr;
+    grid-gap: 15px;
+
+    & .icon {
+      width: 28px;
+      height: 28px;
+      display: flex;
+      justify-content:center;
+      align-items:center;
+
+      & .mdi {
+        font-size: 22px;
+      }
+    }
+    & .text {
+      align-self: center;
+    }
+  }
 }
 
 .progress {
-  background: var(--colorBackgroundLight);
+  background: var(--colorBackgroundSecondary);
   height: 4px;
   width: 100px;
   position: relative;

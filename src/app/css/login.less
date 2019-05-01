@@ -15,12 +15,15 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: 0.2s ease all;
 }
 main {
   display: none;
   width: 250px;
   grid-gap: 15px;
   position: relative;
+  transition: 0.4s ease opacity;
+  opacity: 0;
 
   &.loading {
     justify-content:center;
@@ -28,6 +31,7 @@ main {
 
     &.active {
       display: flex;
+      opacity: 1;
     }
   }
   &.login {
@@ -37,6 +41,7 @@ main {
       margin: 0 auto 25px;
       background: var(--logoLong) no-repeat center;
       background-size: contain;
+      transition: 0.2s ease all;
     }
 
     & .notification {
@@ -47,6 +52,7 @@ main {
       color: var(--colorTextLight);
       font-size: 14px;
       line-height: 1.5;
+      transition: 0.2s ease all;
 
       &.active {
         display: block;
@@ -76,11 +82,13 @@ main {
 
   &.active {
     display: grid;
+    opacity: 1;
   }
 }
 footer {
   position: absolute;
   bottom: 25px;
+  font-size: 12px;
   left: 0;
   right: 0;
   opacity: 0.4;

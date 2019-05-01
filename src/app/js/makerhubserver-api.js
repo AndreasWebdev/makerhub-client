@@ -17,11 +17,10 @@ async function login(username, password) {
     'username': username,
     'password': password
   }).catch(function(error) {
-    console.log(error);
-    return false;
+    return error.response;
   });
 
-  return await (res.status === 200) ? res.data : false;
+  return await res;
 }
 
 async function logout(securityKey) {
@@ -32,11 +31,59 @@ async function logout(securityKey) {
     return false;
   });
 
-  return await (res.status === 200) ? true : false;
+  return !!(await (res.status === 200));
+}
+
+async function me(securityKey) {
+  let res = await axios.post(apiBase + 'security/me', {
+    'key': securityKey
+  }).catch(function(error) {
+    return error.response;
+  });
+
+  return await res;
+}
+
+async function queuePending(securityKey) {
+  let res = await axios.post(apiBase + 'queue/pending', {
+    'key': securityKey
+  }).catch(function(error) {
+    return error.response;
+  });
+
+  return await res;
+}
+
+async function queueToggle(securityKey, newStatus) {
+  let res = await axios.post(apiBase + 'queue/toggle', {
+    'key': securityKey,
+    'newStatus': newStatus
+  }).catch(function(error) {
+    return error.response;
+  });
+
+  return await res;
+}
+
+async function queueComplete(securityKey, levelID, completedTime, highscoreTime) {
+  let res = await axios.post(apiBase + 'queue/complete', {
+    'key': securityKey,
+    'levelID': levelID,
+    'completedTime': completedTime,
+    'highscoreTime': highscoreTime
+  }).catch(function(error) {
+    return error.response;
+  });
+
+  return await res;
 }
 
 module.exports = {
   ping,
   login,
-  logout
+  logout,
+  me,
+  queueComplete,
+  queuePending,
+  queueToggle
 };

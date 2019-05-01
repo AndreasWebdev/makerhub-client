@@ -1,0 +1,412 @@
+:root {
+  --colorBackground: #fff;
+  --colorBackgroundSecondary: #F5F5F5;
+  --colorText: #3b3b3b;
+  --colorTextLight: #4b4b4b;
+  --logoLong: url('../img/LogoLong_OnLight.svg');
+  --logoHat: url('../img/LogoHat_OnAll.svg');
+  --colorPrimary: #D73534;
+  --colorPrimaryDark: #b93131;
+  --colorPrimaryDarkest: #a52c2c;
+  --colorPrimaryText: #fff;
+  --colorHeaderBackground: #fff;
+  --shadowHeaderBackground: 0px 2px 8px rgba(0, 0, 0, 0.15);
+  --colorItemsHeader: rgba(0, 0, 0, 0.6);
+}
+:root[dark="on"] {
+  --colorBackground: #444444;
+  --colorBackgroundSecondary: #575757;
+  --colorText: #fff;
+  --colorTextLight: #e6e6e6;
+  --logoLong: url('../img/LogoLong_OnDark.svg');
+  --logoHat: url('../img/LogoHat_OnAll.svg');
+  --colorPrimary: #D73534;
+  --colorPrimaryDark: #b93131;
+  --colorPrimaryDarkest: #a52c2c;
+  --colorPrimaryText: #fff;
+  --colorHeaderBackground: #2D2D2D;
+  --shadowHeaderBackground: 0px 2px 8px rgba(0, 0, 0, 0.15);
+  --colorItemsHeader: rgba(255, 255, 255, 0.7);
+}
+input[type="text"],
+input[type="password"] {
+  font-family: "Product Sans", sans-serif;
+  font-size: 16px;
+  color: var(--colorText);
+  background-color: var(--colorBackgroundSecondary);
+  border: 2px solid transparent;
+  border-radius: 4px;
+  padding: 6px 16px;
+  transition: 0.2s ease all;
+}
+input[type="text"]::placeholder,
+input[type="password"]::placeholder {
+  color: var(--colorText);
+  opacity: 0.6;
+  transition: 0.2s ease all;
+}
+input[type="text"]:focus,
+input[type="password"]:focus {
+  background: transparent;
+  border-color: var(--colorPrimary);
+  outline: 0;
+}
+button,
+.button {
+  font-family: "Product Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--colorPrimaryText);
+  background: var(--colorPrimary);
+  border-radius: 4px;
+  border: 0;
+  padding: 10px 15px;
+  transition: 0.2s ease all;
+}
+button.login,
+.button.login {
+  display: block;
+  padding: 10px 70px;
+  margin: 0 auto 10px;
+}
+button:hover,
+.button:hover {
+  background: var(--colorPrimaryDark);
+  cursor: pointer;
+}
+button:active,
+.button:active {
+  background: var(--colorPrimaryDarkest);
+}
+button:focus,
+.button:focus {
+  outline: 0;
+}
+button.button-action,
+.button.button-action {
+  background: var(--colorBackground);
+  color: var(--colorPrimary);
+  padding: 5px 15px;
+  font-weight: 600;
+  transition: 0.2s ease all;
+}
+button.button-action:hover,
+.button.button-action:hover {
+  background: var(--colorPrimary);
+  color: var(--colorPrimaryText);
+}
+button.button-icon,
+.button.button-icon {
+  padding: 6px 11px;
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  grid-gap: 15px;
+}
+button.button-icon .icon,
+.button.button-icon .icon {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+button.button-icon .icon .mdi,
+.button.button-icon .icon .mdi {
+  font-size: 22px;
+}
+button.button-icon .text,
+.button.button-icon .text {
+  align-self: center;
+}
+.progress {
+  background: var(--colorBackgroundSecondary);
+  height: 4px;
+  width: 100px;
+  position: relative;
+  overflow: hidden;
+}
+.progress-bar {
+  height: 100%;
+  left: 0;
+  background: var(--colorPrimary);
+  position: absolute;
+  animation-name: animIndeterminate;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  transition: 1s ease all;
+}
+@keyframes animIndeterminate {
+  0% {
+    left: 0%;
+    right: 100%;
+  }
+  25% {
+    left: 0%;
+    right: 0%;
+  }
+  100% {
+    left: 100%;
+    right: 0%;
+  }
+}
+html,
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+body {
+  background: var(--colorBackground);
+  font-family: "Product Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--colorText);
+  transition: 0.2s ease all;
+}
+main {
+  display: none;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+main.loading {
+  grid-gap: 15px;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+main.loading.active {
+  display: flex;
+}
+main.app {
+  display: grid;
+  grid-template-rows: 60px auto auto 1fr;
+  grid-gap: 10px;
+  padding-bottom: 20px;
+  opacity: 0;
+  transition: 0.4s ease opacity;
+  max-height: 100%;
+}
+main.app.letsGo {
+  grid-template-rows: 60px auto 1fr;
+}
+main.app.letsGo .section-letsGo {
+  display: block;
+}
+main.app.letsGo .section-timer {
+  display: none;
+}
+main.app.letsGo .section-currentLevel {
+  display: none;
+}
+main.app header {
+  background: var(--colorHeaderBackground);
+  box-shadow: var(--shadowHeaderBackground);
+  transition: 0.2s ease background, 0.2s ease color, 0.2s ease box-shadow;
+  display: grid;
+  margin-bottom: 10px;
+  grid-template-columns: auto 1fr auto;
+}
+main.app header .branding {
+  padding: 0px 15px 0px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main.app header .branding .logo {
+  width: 35px;
+  height: 22px;
+  background: var(--logoHat) center no-repeat;
+  background-size: contain;
+}
+main.app header .username {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  word-break: break-all;
+}
+main.app header .username span {
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+main.app header .actions {
+  padding: 0px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main.app header .actions .item {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 5px;
+  transition: 0.2s ease all;
+}
+main.app header .actions .item:first-of-type {
+  margin-left: 0px;
+}
+main.app header .actions .item i {
+  font-size: 22px;
+  color: var(--colorItemsHeader);
+}
+main.app header .actions .item:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+main.app section {
+  padding: 0px 20px;
+}
+main.app section.section-letsGo {
+  display: none;
+}
+main.app section.section-letsGo .letsGo,
+main.app section.section-letsGo .queueEmpty {
+  padding: 10px 15px;
+  background: var(--colorBackgroundSecondary);
+  border-radius: 4px;
+  display: none;
+}
+main.app section.section-letsGo .letsGo p,
+main.app section.section-letsGo .queueEmpty p {
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+main.app section.section-letsGo .letsGo .button,
+main.app section.section-letsGo .queueEmpty .button {
+  display: inline-block;
+}
+main.app section.section-letsGo .letsGo.active,
+main.app section.section-letsGo .queueEmpty.active {
+  display: block;
+}
+main.app section.section-timer .timer {
+  padding: 10px 15px;
+  background: var(--colorBackgroundSecondary);
+  border-radius: 4px;
+  display: grid;
+  grid-template-columns: auto auto 1fr auto;
+  grid-gap: 10px;
+  align-items: center;
+  transition: 0.2s ease all;
+}
+main.app section.section-timer .timer .mdi {
+  font-size: 24px;
+}
+main.app section.section-timer .timer .currentTime {
+  font-size: 18px;
+}
+main.app section.section-timer .timer .highscoreTime {
+  opacity: 0.4;
+}
+main.app section.section-timer .timer .actions {
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 5px;
+}
+main.app section.section-timer .timer .actions .button-action {
+  display: none;
+}
+main.app section.section-timer .timer .actions .button-action.active {
+  display: block;
+}
+main.app section.section-currentLevel {
+  display: grid;
+  grid-gap: 10px;
+}
+main.app section.section-currentLevel .currentLevel {
+  padding: 15px;
+  background: var(--colorBackgroundSecondary);
+  border-radius: 4px;
+  border: 2px solid var(--colorPrimary);
+  transition: 0.2s ease all;
+}
+main.app section.section-currentLevel .currentLevel .levelTitle {
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+main.app section.section-currentLevel .currentLevel .levelCode {
+  margin-bottom: 5px;
+}
+main.app section.section-currentLevel .currentLevel .levelCreator {
+  margin-bottom: 10px;
+  opacity: 0.6;
+  font-size: 12px;
+}
+main.app section.section-currentLevel .currentLevel .requestedBy {
+  color: var(--colorPrimary);
+  font-size: 12px;
+}
+main.app section.section-currentLevel .currentLevel-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+}
+main.app section.section-queue {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-gap: 10px;
+  overflow: hidden;
+}
+main.app section.section-queue .queue-actions {
+  padding: 15px;
+  background: var(--colorBackgroundSecondary);
+  border-radius: 4px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-gap: 15px;
+  align-items: center;
+  transition: 0.2s ease all;
+}
+main.app section.section-queue .queue-actions .button-action {
+  display: none;
+}
+main.app section.section-queue .queue-actions .button-action.active {
+  display: block;
+}
+main.app section.section-queue .queue {
+  padding: 10px 15px;
+  background: var(--colorBackgroundSecondary);
+  border-radius: 4px;
+  transition: 0.2s ease all;
+  overflow-y: scroll;
+}
+main.app section.section-queue .queue .item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-gap: 15px;
+}
+main.app section.section-queue .queue .item:not(:last-of-type) {
+  margin-bottom: 15px;
+}
+main.app section.section-queue .queue .item .text {
+  overflow: hidden;
+  word-break: break-all;
+}
+main.app section.section-queue .queue .item .text .title {
+  font-weight: bold;
+  margin-bottom: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+main.app section.section-queue .queue .item .text .requestedBy {
+  font-size: 12px;
+  opacity: 0.6;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+main.app section.section-queue .queue .item .position {
+  align-self: center;
+  font-size: 20px;
+  opacity: 0.6;
+}
+main.active {
+  display: grid;
+  opacity: 1;
+}
+/*# sourceMappingURL=app.css.map */

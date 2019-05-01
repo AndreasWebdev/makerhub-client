@@ -10,16 +10,86 @@
             <link rel="stylesheet" href="css/app.css" />
         </head>
         <body>
-            <header>
-                <button onclick="logout()">Logout</button>
-                Username, Darkmode/Settings/Logout
-            </header>
+            <main class="loading active">
+                <div class="progress">
+                    <div class="progress-bar"></div>
+                </div>
+            </main>
 
-            <section class="section-timer">Timer</section>
+            <main class="app letsGo">
+                <header>
+                    <div class="branding">
+                        <div class="logo"></div>
+                    </div>
+                    <div class="username">
+                        <span id="uiHolderUsername">Unknown User</span>
+                    </div>
+                    <div class="actions">
+                        <div class="item" onclick="actionToggleDarkmode();">
+                            <i class="mdi mdi-theme-light-dark"></i>
+                        </div>
+                        <div class="item" onclick="actionSettings();">
+                            <i class="mdi mdi-settings"></i>
+                        </div>
+                        <div class="item" onclick="actionLogout();">
+                            <i class="mdi mdi-logout-variant"></i>
+                        </div>
+                    </div>
+                </header>
 
-            <section class="section-currentLevel">CurrentLevel, CurrentLevelActions</section>
+                <section class="section-letsGo">
+                    <div class="letsGo" id="uiLetsGo">
+                        <p>You are currently not playing a level! Let's change that by clicking the button below!</p>
+                        <div class="button" onclick="actionLetsGo()">Let's go!</div>
+                    </div>
+                    <div class="queueEmpty" id="uiQueueEmpty">
+                        <p>Seems like your queue is empty! Ask your viewers to send in some levels to start playing!</p>
+                        <div class="button" onclick="refreshQueue()">Refresh the Queue</div>
+                    </div>
+                </section>
 
-            <section class="section-queue">QueueActions, Queue</section>
+                <section class="section-timer">
+                    <div class="timer">
+                        <i class="mdi mdi-timer"></i>
+                        <span class="currentTime" id="uiHolderTimerCurrent">000.00</span>
+                        <span class="highscoreTime" id="uiHolderTimerHighscore">000.00</span>
+                        <div class="actions">
+                            <div class="button button-action active" id="uiButtonTimerStart">Start</div>
+                            <div class="button button-action" id="uiButtonTimerReset">Reset</div>
+                            <div class="button button-action" id="uiButtonTimerStop">Stop</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section-currentLevel">
+                    <div class="currentLevel">
+                        <div class="levelTitle" id="uiHolderLevelTitle"></div>
+                        <div class="levelCode" id="uiHolderLevelCode"></div>
+                        <div class="levelCreator">by <span id="uiHolderLevelCreator"></span></div>
+                        <div class="requestedBy">Requested by <span id="uiHolderRequestedBy"></span></div>
+                    </div>
+                    <div class="currentLevel-actions">
+                        <div class="button button-icon" onclick="actionCurrentLevelSkip()">
+                            <div class="icon"><i class="mdi mdi-skip-forward"></i></div>
+                            <div class="text">Skip Level</div>
+                        </div>
+                        <div class="button button-icon" onclick="actionCurrentLevelFinish()">
+                            <div class="icon"><i class="mdi mdi-flag-checkered"></i></div>
+                            <div class="text">Finish Level</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section-queue">
+                    <div class="queue-actions">
+                        <div class="queueCount"><span id="uiHolderQueueCount">0</span> in Queue</div>
+                        <div class="button button-action" id="uiButtonQueueOpen">Open Queue</div>
+                        <div class="button button-action" id="uiButtonQueueClose">Close Queue</div>
+                    </div>
+                    <div class="queue" id="uiHolderQueue">
+                    </div>
+                </section>
+            </main>
 
             <script src="js/app.js"></script>
         </body>

@@ -1,33 +1,39 @@
 :root {
   --colorBackground: #fff;
-  --colorBackgroundLight: rgba(0, 0, 0, 0.1);
+  --colorBackgroundSecondary: #F5F5F5;
   --colorText: #3b3b3b;
   --colorTextLight: #4b4b4b;
   --logoLong: url('../img/LogoLong_OnLight.svg');
-  --colorInput: rgba(0, 0, 0, 0.05);
+  --logoHat: url('../img/LogoHat_OnAll.svg');
   --colorPrimary: #D73534;
   --colorPrimaryDark: #b93131;
   --colorPrimaryDarkest: #a52c2c;
   --colorPrimaryText: #fff;
+  --colorHeaderBackground: #fff;
+  --shadowHeaderBackground: 0px 2px 8px rgba(0, 0, 0, 0.15);
+  --colorItemsHeader: rgba(0, 0, 0, 0.6);
 }
-:root[dark] {
-  --colorBackground: #2d2d2d;
-  --colorBackgroundLight: rgba(255, 255, 255, 0.1);
+:root[dark="on"] {
+  --colorBackground: #444444;
+  --colorBackgroundSecondary: #575757;
   --colorText: #fff;
   --colorTextLight: #e6e6e6;
   --logoLong: url('../img/LogoLong_OnDark.svg');
-  --colorInput: rgba(255, 255, 255, 0.05);
+  --logoHat: url('../img/LogoHat_OnAll.svg');
   --colorPrimary: #D73534;
   --colorPrimaryDark: #b93131;
   --colorPrimaryDarkest: #a52c2c;
   --colorPrimaryText: #fff;
+  --colorHeaderBackground: #2D2D2D;
+  --shadowHeaderBackground: 0px 2px 8px rgba(0, 0, 0, 0.15);
+  --colorItemsHeader: rgba(255, 255, 255, 0.7);
 }
 input[type="text"],
 input[type="password"] {
   font-family: "Product Sans", sans-serif;
   font-size: 16px;
   color: var(--colorText);
-  background-color: var(--colorInput);
+  background-color: var(--colorBackgroundSecondary);
   border: 2px solid transparent;
   border-radius: 4px;
   padding: 6px 16px;
@@ -37,6 +43,7 @@ input[type="text"]::placeholder,
 input[type="password"]::placeholder {
   color: var(--colorText);
   opacity: 0.6;
+  transition: 0.2s ease all;
 }
 input[type="text"]:focus,
 input[type="password"]:focus {
@@ -65,6 +72,7 @@ button.login,
 button:hover,
 .button:hover {
   background: var(--colorPrimaryDark);
+  cursor: pointer;
 }
 button:active,
 .button:active {
@@ -74,8 +82,44 @@ button:focus,
 .button:focus {
   outline: 0;
 }
+button.button-action,
+.button.button-action {
+  background: var(--colorBackground);
+  color: var(--colorPrimary);
+  padding: 5px 15px;
+  font-weight: 600;
+  transition: 0.2s ease all;
+}
+button.button-action:hover,
+.button.button-action:hover {
+  background: var(--colorPrimary);
+  color: var(--colorPrimaryText);
+}
+button.button-icon,
+.button.button-icon {
+  padding: 6px 11px;
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  grid-gap: 15px;
+}
+button.button-icon .icon,
+.button.button-icon .icon {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+button.button-icon .icon .mdi,
+.button.button-icon .icon .mdi {
+  font-size: 22px;
+}
+button.button-icon .text,
+.button.button-icon .text {
+  align-self: center;
+}
 .progress {
-  background: var(--colorBackgroundLight);
+  background: var(--colorBackgroundSecondary);
   height: 4px;
   width: 100px;
   position: relative;
@@ -120,12 +164,15 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: 0.2s ease all;
 }
 main {
   display: none;
   width: 250px;
   grid-gap: 15px;
   position: relative;
+  transition: 0.4s ease opacity;
+  opacity: 0;
 }
 main.loading {
   justify-content: center;
@@ -133,6 +180,7 @@ main.loading {
 }
 main.loading.active {
   display: flex;
+  opacity: 1;
 }
 main.login .logo {
   width: 220px;
@@ -140,6 +188,7 @@ main.login .logo {
   margin: 0 auto 25px;
   background: var(--logoLong) no-repeat center;
   background-size: contain;
+  transition: 0.2s ease all;
 }
 main.login .notification {
   display: none;
@@ -149,6 +198,7 @@ main.login .notification {
   color: var(--colorTextLight);
   font-size: 14px;
   line-height: 1.5;
+  transition: 0.2s ease all;
 }
 main.login .notification.active {
   display: block;
@@ -171,10 +221,12 @@ main.login .login-form .actions a:hover {
 }
 main.active {
   display: grid;
+  opacity: 1;
 }
 footer {
   position: absolute;
   bottom: 25px;
+  font-size: 12px;
   left: 0;
   right: 0;
   opacity: 0.4;
