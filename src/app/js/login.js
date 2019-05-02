@@ -61,5 +61,5 @@ function login() {
 }
 
 function register() {
-  shell.openExternal("https://makerhub.studio");
+  shell.openExternal("https://makerhub.studio/register");
 }

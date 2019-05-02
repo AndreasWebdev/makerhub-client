@@ -79,7 +79,7 @@ function actionToggleDarkmode() {
 }
 
 function actionSettings() {
-  console.log("TODO");
+  shell.openExternal("https://makerhub.studio/dashboard?key=" + securityKey);
 }
 
 function actionLogout() {
