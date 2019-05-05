@@ -1,5 +1,5 @@
 const axios = require('axios');
-const apiBase = "http://localhost:1337/";
+const apiBase = "http://localhost:1337/api/";
 
 async function ping(securityKey) {
   let res = await axios.post(apiBase + 'security/ping', {
